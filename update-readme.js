@@ -1,5 +1,5 @@
-const { Octokit } = require("@octokit/core");
-const fs = require('fs');
+import { Octokit } from "@octokit/core";
+import fs from 'fs';
 
 const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
 
