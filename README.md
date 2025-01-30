@@ -11,6 +11,9 @@
 ### 📫 How to Reach Me
 
 - LinkedIn: [Luiz Maia](https://www.linkedin.com/in/luizcarlosmaiajunior/)
+- Company: [red8.io](https://red8.io)
+- Personal Website: [luizmaiaj.com](https://luizmaiaj.com)
+- Testing Website: [luiz.be](https://luiz.be)
 
 <!--
 **luizmaiaj/luizmaiaj** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
