@@ -8,7 +8,9 @@
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luizmaiaj&layout=compact)
 
-### Other Cool Stuff
+### 📫 How to Reach Me
+
+- LinkedIn: [Luiz Maia](https://www.linkedin.com/in/luizcarlosmaiajunior/)
 
 <!--
 **luizmaiaj/luizmaiaj** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
