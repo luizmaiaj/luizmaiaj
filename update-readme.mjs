@@ -30,6 +30,7 @@ async function getLanguages() {
 
 async function updateReadme(languageData) {
   let readme = fs.readFileSync('README.md', 'utf8');
+  console.log('Original README content:', readme);
 
   let languageStats = '### 💻 Most Used Languages\n\n';
   for (const [language, bytes] of Object.entries(languageData)) {
@@ -37,7 +38,7 @@ async function updateReadme(languageData) {
   }
 
   readme = readme.replace(/### 💻 Most Used Languages[\s\S]*### 📫 How to Reach Me/, languageStats);
-  fs.writeFileSync('README.md', readme);
+  console.log('Updated README content:', readme);
 
   // Fetch the current SHA of the README.md file
   const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
@@ -45,8 +46,9 @@ async function updateReadme(languageData) {
     repo: 'luizmaiaj',
     path: 'README.md'
   });
+  console.log('Current SHA:', sha);
 
-  await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+  const updateResponse = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
     owner: 'luizmaiaj',
     repo: 'luizmaiaj',
     path: 'README.md',
@@ -55,6 +57,8 @@ async function updateReadme(languageData) {
     sha: sha,
     branch: 'main'
   });
+
+  console.log('Update response:', updateResponse);
 }
 
 getLanguages().then(updateReadme).catch(error => console.error(error));
