@@ -39,12 +39,20 @@ async function updateReadme(languageData) {
   readme = readme.replace(/### 💻 Most Used Languages[\s\S]*### 📫 How to Reach Me/, languageStats);
   fs.writeFileSync('README.md', readme);
 
+  // Fetch the current SHA of the README.md file
+  const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+    owner: 'luizmaiaj',
+    repo: 'luizmaiaj',
+    path: 'README.md'
+  });
+
   await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
     owner: 'luizmaiaj',
     repo: 'luizmaiaj',
     path: 'README.md',
     message: 'Update README with language stats',
     content: Buffer.from(readme).toString('base64'),
+    sha: sha,
     branch: 'main'
   });
 }
