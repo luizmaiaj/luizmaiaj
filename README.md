@@ -1,5 +1,15 @@
 ## Hi there 👋
 
+### GitHub Stats
+
+![Your GitHub Stats](https://github-readme-stats.vercel.app/api?username=luizmaiaj&show_icons=true&theme=radical)
+
+### Most Used Languages
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luizmaiaj&layout=compact)
+
+### Other Cool Stuff
+
 <!--
 **luizmaiaj/luizmaiaj** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
