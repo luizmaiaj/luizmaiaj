@@ -1,7 +1,13 @@
 import { Octokit } from "@octokit/core";
+import fetch from 'node-fetch';
 import fs from 'fs';
 
-const octokit = new Octokit({ auth: process.env.PERSONAL_ACCESS_TOKEN });
+const octokit = new Octokit({
+  auth: process.env.PERSONAL_ACCESS_TOKEN,
+  request: {
+    fetch
+  }
+});
 
 async function getLanguages() {
   const repos = await octokit.request('GET /user/repos', {
