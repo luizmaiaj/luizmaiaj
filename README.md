@@ -8,6 +8,8 @@
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luizmaiaj&layout=compact)
 
+<!-- Language stats will be inserted here -->
+
 ### 📫 How to Reach Me
 
 - LinkedIn: [Luiz Maia](https://www.linkedin.com/in/luizcarlosmaiajunior/)
