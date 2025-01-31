@@ -3,10 +3,9 @@
 ### 📫 How to Reach Me
 
 - LinkedIn: [Luiz Maia](https://www.linkedin.com/in/luizcarlosmaiajunior/)
-- Company: [red8.io](https://red8.io)
-- Personal Website: [luizmaiaj.com](https://luizmaiaj.com)
-- Website for testing: [luiz.be](https://luiz.be)
-
+- Project: [red8.io](https://red8.io)
+- CV and Blog: [luizmaiaj.com](https://luizmaiaj.com)
+- Playground website: [luiz.be](https://luiz.be)
 
 <!-- START LANGUAGE STATS -->
 ## 🚀 Language Statistics
@@ -39,4 +38,3 @@
 
 </details>
 <!-- END LANGUAGE STATS -->
-  
