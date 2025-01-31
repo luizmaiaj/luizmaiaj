@@ -25,13 +25,50 @@ async function getLanguages() {
       languageData[language] += bytes;
     }
   }
-  console.log('Language Data:', languageData);
   return languageData;
+}
+
+function generateChartUrl(languageData) {
+  const labels = Object.keys(languageData);
+  const data = Object.values(languageData);
+  const total = data.reduce((sum, val) => sum + val, 0);
+  const percentages = data.map(bytes => ((bytes / total) * 100).toFixed(2));
+
+  return `https://quickchart.io/chart?c={
+    type: 'pie',
+    data: {
+      labels: ${JSON.stringify(labels)},
+      datasets: [{
+        data: ${JSON.stringify(percentages)},
+        backgroundColor: ['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40']
+      }]
+    },
+    options: {
+      title: { display: true, text: 'Language Usage' },
+      animation: { animateRotate: true }
+    }
+  }`;
+}
+
+function generateProgressBars(languageData) {
+  const total = Object.values(languageData).reduce((sum, val) => sum + val, 0);
+  return Object.entries(languageData)
+    .sort((a, b) => b[1] - a[1])
+    .map(([lang, bytes]) => {
+      const percent = ((bytes / total) * 100).toFixed(2);
+      return `
+**${lang}**  
+\`\`\`text
+${'█'.repeat((percent / 2))} ${percent}%
+\`\`\`
+      `;
+    }).join('\n');
 }
 
 async function updateReadme(languageData) {
   let readme = fs.readFileSync('README.md', 'utf8');
-  console.log('Original README content:', readme);
+  const chartUrl = generateChartUrl(languageData);
+  const progressBars = generateProgressBars(languageData);
 
   let languageStats = '### 💻 Most Used Languages\n\n';
   for (const [language, bytes] of Object.entries(languageData)) {
@@ -39,12 +76,38 @@ async function updateReadme(languageData) {
   }
 
   // Crete new content
-  const startMarker = '<!-- START LANGUAGE STATS -->';
-  const endMarker = '<!-- END LANGUAGE STATS -->';
-  const newContent = `${startMarker}\n${languageStats}\n${endMarker}`;
+  const newContent = `
+<!-- START LANGUAGE STATS -->
+## 🚀 Language Statistics
+
+### 📊 Animated Pie Chart
+![Language Chart](${chartUrl})
+
+### 📈 Language Distribution
+${progressBars}
+
+<details>
+<summary>📋 Raw Data</summary>
+
+| Language | Percentage | Bytes |
+|----------|------------|-------|
+${Object.entries(languageData)
+  .sort((a, b) => b[1] - a[1])
+  .map(([lang, bytes]) => {
+    const percent = ((bytes / Object.values(languageData).reduce((a, b) => a + b, 0)) * 100).toFixed(2);
+    return `| ${lang} | ${percent}% | ${bytes.toLocaleString()} |`;
+  }).join('\n')}
+
+</details>
+<!-- END LANGUAGE STATS -->
+  `;
 
   // Replace the content
-  readme = readme.replace(new RegExp(`${startMarker}[\\s\\S]*${endMarker}`), newContent);
+  // readme = readme.replace(new RegExp(`${startMarker}[\\s\\S]*${endMarker}`), newContent);
+  readme = readme.replace(/<!-- START LANGUAGE STATS -->[\s\S]*<!-- END LANGUAGE STATS -->/, newContent);
+
+  // fs.writeFileSync('README.md', readme);
+  
   console.log('Updated README content:', readme);
 
   // Fetch the current SHA of the README.md file
@@ -53,7 +116,6 @@ async function updateReadme(languageData) {
     repo: 'luizmaiaj',
     path: 'README.md'
   });
-  console.log('Current SHA:', sha);
 
   const updateResponse = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
     owner: 'luizmaiaj',
@@ -64,8 +126,6 @@ async function updateReadme(languageData) {
     sha: sha,
     branch: 'main'
   });
-
-  console.log('Update response:', updateResponse);
 }
 
 getLanguages().then(updateReadme).catch(error => console.error(error));
