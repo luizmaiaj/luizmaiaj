@@ -51,8 +51,7 @@ async function updateReadme(languageData) {
     .join(' ');
 
   // Crete new content
-  const newContent = `
-<!-- START LANGUAGE STATS -->
+  const newContent = `<!-- START LANGUAGE STATS -->
 ## 🚀 Language Statistics
 
 ${badges}
@@ -67,8 +66,7 @@ ${Object.entries(languageData)
   }).join('\n')}
 
 </details>
-<!-- END LANGUAGE STATS -->
-  `;
+<!-- END LANGUAGE STATS -->`;
 
   // Replace the content
   readme = readme.replace(/<!-- START LANGUAGE STATS -->[\s\S]*<!-- END LANGUAGE STATS -->/, newContent);
