@@ -40,36 +40,8 @@ async function getLanguages() {
   return languageData;
 }
 
-function generateChartUrl(languageData) {
-  const labels = Object.keys(languageData);
-  const data = Object.values(languageData);
-  const total = data.reduce((a, b) => a + b, 0);
-  const percentages = data.map(bytes => (bytes / total * 100).toFixed(2));
-
-  // Properly encode the chart configuration
-  const chartConfig = {
-    type: 'pie',
-    data: {
-      labels: labels,
-      datasets: [{
-        data: percentages,
-        backgroundColor: ['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40']
-      }]
-    },
-    options: {
-      title: { display: true, text: 'Language Usage' },
-      animation: { animateRotate: true },
-      plugins: { legend: { position: 'right' } }
-    }
-  };
-
-  const encodedConfig = encodeURIComponent(JSON.stringify(chartConfig).replace(/\s+/g, ''));
-  return `https://quickchart.io/chart?c=${encodedConfig}&backgroundColor=white`;
-}
-
 async function updateReadme(languageData) {
   let readme = fs.readFileSync('README.md', 'utf8');
-  const chartUrl = generateChartUrl(languageData);
 
   // Generate badges section
   const badges = Object.keys(languageData)
@@ -83,14 +55,7 @@ async function updateReadme(languageData) {
 <!-- START LANGUAGE STATS -->
 ## 🚀 Language Statistics
 
-### 🔝 Language Badges
 ${badges}
-
-### 📊 Animated Pie Chart
-![Language Chart](${chartUrl})
-
-<details>
-<summary>📋 Raw Data</summary>
 
 | Language | Percentage | Bytes |
 |----------|------------|-------|
@@ -106,11 +71,8 @@ ${Object.entries(languageData)
   `;
 
   // Replace the content
-  // readme = readme.replace(new RegExp(`${startMarker}[\\s\\S]*${endMarker}`), newContent);
   readme = readme.replace(/<!-- START LANGUAGE STATS -->[\s\S]*<!-- END LANGUAGE STATS -->/, newContent);
 
-  // fs.writeFileSync('README.md', readme);
-  
   console.log('Updated README content:', readme);
 
   // Fetch the current SHA of the README.md file
