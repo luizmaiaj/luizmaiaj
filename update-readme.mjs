@@ -9,6 +9,18 @@ const octokit = new Octokit({
   }
 });
 
+// Language badge mapping (simplified for example)
+const LANGUAGE_BADGES = {
+  "Python": "![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)",
+  "JavaScript": "![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)",
+  "Swift": "![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)",
+  "HTML": "![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)",
+  "CSS": "![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)",
+  "Shell": "![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)",
+  "Dockerfile": "![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)",
+  "Jupyter Notebook": "![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)"
+};
+
 async function getLanguages() {
   const repos = await octokit.request('GET /user/repos', {
     type: 'private',
@@ -31,54 +43,48 @@ async function getLanguages() {
 function generateChartUrl(languageData) {
   const labels = Object.keys(languageData);
   const data = Object.values(languageData);
-  const total = data.reduce((sum, val) => sum + val, 0);
-  const percentages = data.map(bytes => ((bytes / total) * 100).toFixed(2));
+  const total = data.reduce((a, b) => a + b, 0);
+  const percentages = data.map(bytes => (bytes / total * 100).toFixed(2));
 
-  return `https://quickchart.io/chart?c={
+  // Properly encode the chart configuration
+  const chartConfig = {
     type: 'pie',
     data: {
-      labels: ${JSON.stringify(labels)},
+      labels: labels,
       datasets: [{
-        data: ${JSON.stringify(percentages)},
+        data: percentages,
         backgroundColor: ['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40']
       }]
     },
     options: {
       title: { display: true, text: 'Language Usage' },
-      animation: { animateRotate: true }
+      animation: { animateRotate: true },
+      plugins: { legend: { position: 'right' } }
     }
-  }`;
-}
+  };
 
-function generateProgressBars(languageData) {
-  const total = Object.values(languageData).reduce((sum, val) => sum + val, 0);
-  return Object.entries(languageData)
-    .sort((a, b) => b[1] - a[1])
-    .map(([lang, bytes]) => {
-      const percent = ((bytes / total) * 100).toFixed(2);
-      return `
-**${lang}**  
-\`\`\`text
-${'█'.repeat((percent / 2))} ${percent}%
-\`\`\`
-      `;
-    }).join('\n');
+  const encodedConfig = encodeURIComponent(JSON.stringify(chartConfig).replace(/\s+/g, ''));
+  return `https://quickchart.io/chart?c=${encodedConfig}&backgroundColor=white`;
 }
 
 async function updateReadme(languageData) {
   let readme = fs.readFileSync('README.md', 'utf8');
   const chartUrl = generateChartUrl(languageData);
-  const progressBars = generateProgressBars(languageData);
 
-  let languageStats = '### 💻 Most Used Languages\n\n';
-  for (const [language, bytes] of Object.entries(languageData)) {
-    languageStats += `- ${language}: ${bytes} bytes\n`;
-  }
+  // Generate badges section
+  const badges = Object.keys(languageData)
+    .sort((a, b) => languageData[b] - languageData[a])
+    .map(lang => LANGUAGE_BADGES[lang] || '')
+    .filter(Boolean)
+    .join(' ');
 
   // Crete new content
   const newContent = `
 <!-- START LANGUAGE STATS -->
 ## 🚀 Language Statistics
+
+### 🔝 Language Badges
+${badges}
 
 ### 📊 Animated Pie Chart
 ![Language Chart](${chartUrl})
