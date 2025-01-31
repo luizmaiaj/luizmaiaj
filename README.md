@@ -7,6 +7,7 @@
 - Personal Website: [luizmaiaj.com](https://luizmaiaj.com)
 - Website for testing: [luiz.be](https://luiz.be)
 
+
 <!-- START LANGUAGE STATS -->
 ## 🚀 Language Statistics
 
@@ -25,4 +26,6 @@
 | Makefile | 0.01% | 1,092 |
 | Batchfile | 0.00% | 83 |
 
+</details>
 <!-- END LANGUAGE STATS -->
+  
