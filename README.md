@@ -7,16 +7,10 @@
 - Personal Website: [luizmaiaj.com](https://luizmaiaj.com)
 - Website for testing: [luiz.be](https://luiz.be)
 
-
-
 <!-- START LANGUAGE STATS -->
 ## 🚀 Language Statistics
 
-### 🔝 Language Badges
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
-
-<details>
-<summary>📋 Raw Data</summary>
 
 | Language | Percentage | Bytes |
 |----------|------------|-------|
@@ -31,15 +25,4 @@
 | Makefile | 0.01% | 1,092 |
 | Batchfile | 0.00% | 83 |
 
-</details>
 <!-- END LANGUAGE STATS -->
-  
-  
-
-### GitHub Stats
-
-![Your GitHub Stats](https://github-readme-stats.vercel.app/api?username=luizmaiaj&show_icons=true&theme=radical)
-
-### 💻 Most Used Languages on public repos
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luizmaiaj&layout=compact)
