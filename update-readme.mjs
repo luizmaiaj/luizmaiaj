@@ -25,6 +25,7 @@ async function getLanguages() {
       languageData[language] += bytes;
     }
   }
+  console.log('Language Data:', languageData);
   return languageData;
 }
 
@@ -37,17 +38,13 @@ async function updateReadme(languageData) {
     languageStats += `- ${language}: ${bytes} bytes\n`;
   }
 
-  console.log(languageStats)
+  // Crete new content
+  const startMarker = '<!-- START LANGUAGE STATS -->';
+  const endMarker = '<!-- END LANGUAGE STATS -->';
+  const newContent = `${startMarker}\n${languageStats}\n${endMarker}`;
 
-  // Ensure the placeholder is correctly identified and replaced
-  const placeholder = '<!-- Language stats will be inserted here -->';
-  if (readme.includes(placeholder)) {
-    readme = readme.replace(placeholder, languageStats);
-  } else {
-    // If the placeholder is not found, append the language stats at the end
-    readme += `\n${languageStats}`;
-  }
-
+  // Replace the content
+  readme = readme.replace(new RegExp(`${startMarker}[\\s\\S]*${endMarker}`), newContent);
   console.log('Updated README content:', readme);
 
   // Fetch the current SHA of the README.md file
