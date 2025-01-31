@@ -6,7 +6,19 @@
 
 ### 💻 Most Used Languages on all repos
 <!-- START LANGUAGE STATS -->
-{% include_relative ./most-used-languages.md %}
+### 💻 Most Used Languages
+
+- Python: 177728 bytes
+- Jupyter Notebook: 130922 bytes
+- Swift: 761799 bytes
+- Dockerfile: 4086 bytes
+- JavaScript: 7145423 bytes
+- Shell: 2975 bytes
+- HTML: 954827 bytes
+- CSS: 1027155 bytes
+- Makefile: 1092 bytes
+- Batchfile: 83 bytes
+
 <!-- END LANGUAGE STATS -->
 
 ### 💻 Most Used Languages on public repos
