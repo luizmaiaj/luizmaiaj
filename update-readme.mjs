@@ -89,9 +89,6 @@ ${badges}
 ### 📊 Animated Pie Chart
 ![Language Chart](${chartUrl})
 
-### 📈 Language Distribution
-${progressBars}
-
 <details>
 <summary>📋 Raw Data</summary>
 
