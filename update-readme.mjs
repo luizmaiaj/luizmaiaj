@@ -23,7 +23,7 @@ const LANGUAGE_BADGES = {
 
 async function getLanguages() {
   const repos = await octokit.request('GET /user/repos', {
-    type: 'private',
+    type: 'all',
     per_page: 100
   });
 
