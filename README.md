@@ -4,11 +4,7 @@
 
 ![Your GitHub Stats](https://github-readme-stats.vercel.app/api?username=luizmaiaj&show_icons=true&theme=radical)
 
-### Most Used Languages
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luizmaiaj&layout=compact)
-
-### 💻 Most Used Languages
+### 💻 Most Used Languages on all repos
 
 - Python: 177728 bytes
 - Jupyter Notebook: 130922 bytes
@@ -21,6 +17,9 @@
 - Makefile: 1092 bytes
 - Batchfile: 83 bytes
 
+### 💻 Most Used Languages on public repos
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luizmaiaj&layout=compact)
 
 ### 📫 How to Reach Me
 
@@ -43,16 +42,3 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-
-### 💻 Most Used Languages
-
-- Python: 177728 bytes
-- Jupyter Notebook: 130922 bytes
-- Swift: 761799 bytes
-- Dockerfile: 4086 bytes
-- JavaScript: 7145423 bytes
-- Shell: 2975 bytes
-- HTML: 954827 bytes
-- CSS: 1027155 bytes
-- Makefile: 1092 bytes
-- Batchfile: 83 bytes
