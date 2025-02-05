@@ -50,7 +50,11 @@
 
 
 ### AIs
-Deepseek, Mistral, Qwen, Ollama, Claude
+![Deepseek](https://img.shields.io/badge/Deepseek-000000?style=for-the-badge&logoColor=white) 
+![Mistral AI](https://img.shields.io/badge/Mistral_AI-5540C7?style=for-the-badge&logoColor=white) 
+![Qwen](https://img.shields.io/badge/Qwen-FF6B6B?style=for-the-badge&logoColor=white) 
+![Ollama](https://img.shields.io/badge/Ollama-FF1B2D?style=for-the-badge&logoColor=white) 
+![Claude](https://img.shields.io/badge/Claude-000000?style=for-the-badge&logo=anthropic&logoColor=white)
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Perplexity](https://img.shields.io/badge/perplexity-000000?style=for-the-badge&logo=perplexity&logoColor=088F8F)
 
 ### Browsers
