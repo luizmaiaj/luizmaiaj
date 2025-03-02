@@ -70,7 +70,6 @@ ${Object.entries(languageData)
     return `| ${lang} | ${percent}% | ${bytes.toLocaleString()} |`;
   }).join('\n')}
 
-</details>
 <!-- END LANGUAGE STATS -->`;
 
   // Replace the content
