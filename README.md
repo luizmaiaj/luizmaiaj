@@ -20,7 +20,7 @@
 | Python | 3.27% | 617,107 |
 | C++ | 1.43% | 268,981 |
 | ASP.NET | 0.96% | 181,725 |
-| JavaScript | 0.90% | 169,264 |
+| JavaScript | 0.90% | 169,253 |
 | Jupyter Notebook | 0.69% | 130,922 |
 | HTML | 0.23% | 43,317 |
 | TeX | 0.22% | 40,936 |
@@ -36,7 +36,6 @@
 | GLSL | 0.00% | 579 |
 | CMake | 0.00% | 350 |
 
-</details>
 <!-- END LANGUAGE STATS -->
 
 ## 🔧 Tools
