@@ -42,6 +42,9 @@ async function getLanguages() {
       languageData[language] += bytes;
     }
   }
+
+  console.log(languageData)
+
   return languageData;
 }
 
@@ -95,4 +98,6 @@ ${Object.entries(languageData)
   });
 }
 
-getLanguages().then(updateReadme).catch(error => console.error(error));
+getLanguages()
+  .then(updateReadme)
+  .catch(error => console.error(error));
